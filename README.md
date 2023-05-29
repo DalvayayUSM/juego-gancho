@@ -1,2 +1,2 @@
 # juego-gancho
-Juego donde se utiliza un gancho hecho en unity
+Implementación de un juego hecho en Unity cuya mecánica principal consiste en utilizar un gancho para llegar a la meta.
