@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 213.55
+  m_fontSize: 232.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1210,6 +1210,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2037372351}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1006641636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,7 +1465,7 @@ RectTransform:
   m_Children:
   - {fileID: 1800143651}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1851,6 +1863,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800143650}
   m_CullTransparentMesh: 1
+--- !u!1 &2037372351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1619772330113542589, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+  m_PrefabInstance: {fileID: 1619772329606981465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1619772329606981465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1860,15 +1877,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1619772329689105525, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1619772329689105525, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1619772329689105525, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1619772329855279178, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1880,11 +1897,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330113542589, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330113542591, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330113542591, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1928,7 +1945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330488903652, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330493933911, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_CullTransparentMesh
@@ -1936,19 +1953,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1619772331200102149, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1619772331200102149, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1619772331200102149, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1619772331350935279, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}

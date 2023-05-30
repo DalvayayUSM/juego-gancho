@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && jumpReady)
+        if (Input.GetButtonDown("Fire1") && isGrounded && jumpReady)
         {
             jumpReady = false;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -83,14 +83,24 @@ public class PlayerController : MonoBehaviour
         //---------------------
 
         //GroundCheck
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        RaycastHit groundInfo;
+        
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out groundInfo, playerHeight * 0.5f + 0.05f, whatIsGround);
 
         if (isGrounded) {
             rb.drag = groundDrag;
+            if (groundInfo.collider.CompareTag("MovablePlatform")) {
+                transform.parent = groundInfo.transform;
+                moveForce = 20;
+            }
+
         }
         else
         {
             rb.drag = 0;
+            transform.parent = null;
+            moveForce = 15;
+
         }
         //---------------------
 
@@ -104,7 +114,7 @@ public class PlayerController : MonoBehaviour
         }
         //---------------------
 
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetButtonDown("Fire3")) {
 
             rayo = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;

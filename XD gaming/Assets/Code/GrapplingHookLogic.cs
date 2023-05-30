@@ -21,6 +21,7 @@ public class GrapplingHookLogic : MonoBehaviour
 
 
     private LineRenderer lr;
+    private Transform anchor;
     private SpringJoint joint;
     private Vector3 grapplingPoint = new(0,0,0);
     private float distance;
@@ -31,10 +32,10 @@ public class GrapplingHookLogic : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Q)){
+        if (Input.GetButtonDown("Fire2")){
             StartHook();
         }
-        else if(Input.GetKeyUp(KeyCode.Q)){
+        else if(Input.GetButtonUp("Fire2")){
             StopHook();
         }
     }
@@ -45,13 +46,15 @@ public class GrapplingHookLogic : MonoBehaviour
 
     void StartHook() {
         RaycastHit hitInfo;
-        if (Physics.Raycast(cam.position, cam.forward ,out hitInfo, maxDistance,whatIsGrappeable)){
-            grapplingPoint = hitInfo.point;
+        if (Physics.Raycast(cam.position, cam.forward ,out hitInfo, maxDistance, whatIsGrappeable)){
+            //grapplingPoint = hitInfo.point;
+            anchor = hitInfo.transform;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = grapplingPoint;
+            joint.connectedBody = hitInfo.rigidbody;
 
-            distance = Vector3.Distance(player.position, grapplingPoint);
+            //distance = Vector3.Distance(player.position, grapplingPoint);
             joint.minDistance = distance * 0.25f;
 
             joint.spring = SpringForce;
@@ -63,9 +66,9 @@ public class GrapplingHookLogic : MonoBehaviour
     }
 
     void DrawRope(){
-        if (!joint) return;
+        if (!joint || anchor == null) return;
         lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, grapplingPoint);
+        lr.SetPosition(1, anchor.position);
     }
 
     void StopHook(){

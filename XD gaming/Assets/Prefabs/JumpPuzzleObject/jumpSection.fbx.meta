@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jump Puzzle Animation
+      name: Jump Puzzle Anim
       takeName: Scene
       internalID: -623603649343465320
       firstFrame: 1

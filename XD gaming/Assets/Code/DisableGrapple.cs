@@ -11,13 +11,13 @@ public class DisableGrapple : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            grappleText.SetText("Grapple: Disabled");
+            grappleText.SetText("Gancho: Desactivado");
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("Player")) {
-            grappleText.SetText("Grapple: Available");
+            grappleText.SetText("Gancho: Disponible");
         }
     }
 
