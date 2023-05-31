@@ -53,8 +53,6 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     private void Update() {
-
-
         //Control de la camara
         mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity;
         mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
@@ -93,7 +91,6 @@ public class PlayerController : MonoBehaviour
                 transform.parent = groundInfo.transform;
                 moveForce = 20;
             }
-
         }
         else
         {
@@ -126,7 +123,11 @@ public class PlayerController : MonoBehaviour
                 Destroy(temp, 1.0f);
             }
         }
-
+        //resetea al jugador al morir
+        if (transform.position.y <= -6.15)
+        {
+            transform.position = new Vector3(0, 1.77f, 0);
+        }
     }
     private void FixedUpdate() {
 
@@ -139,8 +140,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    void ResetJump()
-    {
+    void ResetJump() {
         jumpReady = true;
     }
 }

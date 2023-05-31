@@ -13,7 +13,7 @@ public class Win_condition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             winText.SetText("You ganaste");
-            SceneManager.LoadScene(2);
+            //SceneManager.LoadScene(2);
         }
     }
 
