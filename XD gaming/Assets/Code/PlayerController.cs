@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update() {
         //Control de la camara
+        //mouseX = Input.GetAxisRaw("Right stick X") * Time.deltaTime * sensitivity;
+        //mouseY = Input.GetAxis("Right stick Y") * Time.deltaTime * sensitivity;
         mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity;
         mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
 
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetButtonDown("Fire1") && isGrounded && jumpReady)
+        if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && isGrounded && jumpReady)
         {
             jumpReady = false;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -89,14 +91,14 @@ public class PlayerController : MonoBehaviour
             rb.drag = groundDrag;
             if (groundInfo.collider.CompareTag("MovablePlatform")) {
                 transform.parent = groundInfo.transform;
-                moveForce = 20;
+                moveForce = 25;
             }
         }
         else
         {
             rb.drag = 0;
             transform.parent = null;
-            moveForce = 15;
+            moveForce = 20;
 
         }
         //---------------------
@@ -111,7 +113,7 @@ public class PlayerController : MonoBehaviour
         }
         //---------------------
 
-        if (Input.GetButtonDown("Fire3")) {
+        if (Input.GetButtonDown("Fire3") || Input.GetKeyDown(KeyCode.E)) {
 
             rayo = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
@@ -142,5 +144,12 @@ public class PlayerController : MonoBehaviour
     }
     void ResetJump() {
         jumpReady = true;
+    }
+    public void setAirMultiplier(float value){
+        airMultiplier = value;
+    }
+    public float getAirMultiplier()
+    {
+        return airMultiplier;
     }
 }

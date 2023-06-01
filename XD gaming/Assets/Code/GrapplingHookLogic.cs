@@ -12,6 +12,7 @@ namespace Grapple
         public float SpringDamper = 7.0f;
         public float SpringMassScale = 4.5f;
         public float maxDistance = 30;
+        public float airBoost = 1;
 
         [Header("Layer Mask")]
         public LayerMask whatIsGrappeable;
@@ -28,19 +29,23 @@ namespace Grapple
         private Vector3 grapplingPoint = new(0, 0, 0);
         private float distance;
         private bool movil;
+        private float defaultAirMultiplier;
+
+        public PlayerController pl;
 
 
         void Start()
         {
             lr = GetComponent<LineRenderer>();
+            defaultAirMultiplier = pl.getAirMultiplier();
         }
 
         void Update()
         {
-            if (Input.GetButtonDown("Fire2")) {
+            if (Input.GetButtonDown("Fire2") || Input.GetButtonDown("X button") || Input.GetKeyDown(KeyCode.Q)) {
                 StartHook();
             }
-            else if (Input.GetButtonUp("Fire2")) {
+            else if (Input.GetButtonUp("Fire2") || Input.GetButtonUp("X button") || Input.GetKeyUp(KeyCode.Q)) {
                 StopHook();
             }
             //detiene el gancho al morir
@@ -65,22 +70,28 @@ namespace Grapple
                 anchor = hitInfo.transform;
                 joint = player.gameObject.AddComponent<SpringJoint>();
                 joint.autoConfigureConnectedAnchor = false;
+                joint.enablePreprocessing = false;
+                joint.enableCollision = true;
                 if (hitInfo.collider.CompareTag("MovablePlatform")) {
                     joint.connectedBody = hitInfo.rigidbody;
+                    distance = Vector3.Distance(player.position, grapplingPoint);
                     movil = true;
                 }
                 else
                 {
                     joint.connectedAnchor = grapplingPoint;
+                    distance = Vector3.Distance(player.position, anchor.position);
                     movil = false;
                 }
 
-                //distance = Vector3.Distance(player.position, grapplingPoint);
+                
                 joint.minDistance = distance * 0.25f;
 
                 joint.spring = SpringForce;
                 joint.damper = SpringDamper;
                 joint.massScale = SpringMassScale;
+
+                pl.setAirMultiplier(airBoost);
 
                 lr.positionCount = 2;
             }
@@ -101,6 +112,7 @@ namespace Grapple
         void StopHook() {
             lr.positionCount = 0;
             Destroy(joint);
+            pl.setAirMultiplier(defaultAirMultiplier);
         }
 
     }
