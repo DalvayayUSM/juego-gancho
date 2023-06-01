@@ -124,9 +124,9 @@ public class PlayerController : MonoBehaviour
             }
         }
         //resetea al jugador al morir
-        if (transform.position.y <= -6.15)
+        if (transform.position.y <= -10)
         {
-            transform.position = new Vector3(0, 1.77f, 0);
+            transform.position = Vector3.zero;
         }
     }
     private void FixedUpdate() {
