@@ -50,7 +50,7 @@ namespace Grapple
                 StopHook();
             }
             //detiene el gancho al morir
-            if (player.position.y <= -6.15) {
+            if (player.position.y <= -15) {
                 StopHook();
             }
         }

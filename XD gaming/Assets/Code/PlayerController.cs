@@ -96,8 +96,7 @@ public class PlayerController : MonoBehaviour
                 moveForce = 25;
             }
         }
-        else
-        {
+        else {
             rb.drag = 0;
             transform.parent = null;
             moveForce = 20;
@@ -108,8 +107,7 @@ public class PlayerController : MonoBehaviour
         //Control de velocidad
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > moveForce)
-        {
+        if (flatVel.magnitude > moveForce) {
             Vector3 limitedVel = flatVel.normalized * moveForce;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
@@ -128,8 +126,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         //resetea al jugador al morir
-        if (transform.position.y <= -10)
-        {
+        if (transform.position.y <= -20) {
             transform.position = Vector3.zero;
         }
     }

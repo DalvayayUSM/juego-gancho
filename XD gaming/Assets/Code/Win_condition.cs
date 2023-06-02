@@ -6,23 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class Win_condition : MonoBehaviour
 {
-    public TMP_Text winText;
-
+    public int nextScene;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player"))
         {
-            winText.SetText("You ganaste");
-            //SceneManager.LoadScene(2);
+            SceneManager.LoadScene(nextScene);
         }
     }
 
-    private void OnTriggerExit(Collider other){
-        if (other.CompareTag("Player"))
-        {
-            winText.SetText("");
-        }
-    }
     void Start(){
     }
 
