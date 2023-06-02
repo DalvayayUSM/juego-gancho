@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float sensitivity = 300;
 
     private float mouseX = 0, mouseY = 0;
+    private float rsX = 0, rsY = 0;
     private float xCamRotation;
     private float yCamRotation;
 
@@ -54,14 +55,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update() {
         //Control de la camara
-        //mouseX = Input.GetAxisRaw("Right stick X") * Time.deltaTime * sensitivity;
-        //mouseY = Input.GetAxis("Right stick Y") * Time.deltaTime * sensitivity;
+        //Control
+        rsX = Input.GetAxisRaw("Right stick X") * Time.deltaTime * sensitivity*2;
+        rsY = Input.GetAxis("Right stick Y") * Time.deltaTime * sensitivity*2;
+        //Mouse
         mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity;
         mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
 
-        yCamRotation += mouseX;
-
-        xCamRotation -= mouseY;
+        yCamRotation += rsX + mouseX;
+        xCamRotation -= rsY + mouseY;
         xCamRotation = Mathf.Clamp(xCamRotation, -90f, 90f);
 
         cam.transform.rotation = Quaternion.Euler(xCamRotation, yCamRotation, 0);

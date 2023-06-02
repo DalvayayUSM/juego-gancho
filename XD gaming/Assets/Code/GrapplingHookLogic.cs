@@ -21,6 +21,7 @@ namespace Grapple
         public Transform gunTip;
         public Transform cam;
         public Transform player;
+        public Camera camCamera;
 
 
         private LineRenderer lr;
@@ -62,8 +63,7 @@ namespace Grapple
         void StartHook()
         {
             RaycastHit hitInfo;
-            if (Physics.Raycast(cam.position, cam.forward, out hitInfo, maxDistance, whatIsGrappeable))
-            {
+            if (Physics.Raycast(cam.position, cam.forward, out hitInfo, maxDistance, whatIsGrappeable)) {
                 //para objeto estatico
                 grapplingPoint = hitInfo.point;
                 //para objeto en movimiento
