@@ -10,7 +10,7 @@ public class volume : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
-        slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
+        slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.1f);
         AudioListener.volume = slider.value;
         GetOnMute();
     }

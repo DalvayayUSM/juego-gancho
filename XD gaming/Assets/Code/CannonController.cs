@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class CannonController : MonoBehaviour
 {
-
+    [Header("Prefab")]
     public GameObject ballPrefab;
     public Transform firePoint;
 
+    [Header("Values")]
     public float delay = 3;
     public float forceMultiplier = 3;
-    float timer;
     GameObject ball;
     Rigidbody rb;
 
-    void Start()
-    {
-        InvokeRepeating(nameof(createBall), delay, delay);
+    void Start() {
+        InvokeRepeating(nameof(CreateBall), delay, delay);
 
     }
-    void createBall(){
+    void CreateBall(){
         ball = Instantiate(ballPrefab, firePoint.position, Quaternion.identity);
         rb = ball.GetComponent<Rigidbody>();
-        Invoke(nameof(fire),delay);
+        Invoke(nameof(Fire),delay);
     }
-    void fire(){
-        
-        rb.AddForce(Vector3.up*forceMultiplier, ForceMode.Impulse);
-        Destroy(ball, delay);
+    void Fire(){
+        rb.AddForce(firePoint.up*forceMultiplier, ForceMode.Impulse);
+        Destroy(ball, delay*1.5f);
 
         
     }

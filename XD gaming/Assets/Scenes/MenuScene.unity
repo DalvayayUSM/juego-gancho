@@ -513,7 +513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Destiny 2
+  m_text: Super Grapple
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 214.15
+  m_fontSize: 178.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1891,6 +1891,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1800143650}
+    - target: {fileID: 1619772329855279179, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1619772330113542589, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_Name
       value: ScenesObject
@@ -1904,12 +1908,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330113542591, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619772330113542591, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_LocalPosition.x
       value: 550.5
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330113542591, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 259.5
+      value: 259.25
       objectReference: {fileID: 0}
     - target: {fileID: 1619772330113542591, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1958,6 +1966,22 @@ PrefabInstance:
     - target: {fileID: 1619772330493933911, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619772330618380676, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6489648
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619772330618380676, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5446318
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619772330706887452, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.649621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619772330706887452, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.57087904
       objectReference: {fileID: 0}
     - target: {fileID: 1619772331200102149, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.x
