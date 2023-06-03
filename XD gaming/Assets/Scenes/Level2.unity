@@ -1103,12 +1103,20 @@ PrefabInstance:
       value: 75.55029
       objectReference: {fileID: 0}
     - target: {fileID: 7076350205095613802, guid: a7e3af0bd7bb5114e94ab693065de28e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 238.18517
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076350205095613802, guid: a7e3af0bd7bb5114e94ab693065de28e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 54.759586
+      value: 58.729656
       objectReference: {fileID: 0}
     - target: {fileID: 7076350205095613802, guid: a7e3af0bd7bb5114e94ab693065de28e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.3803
+      value: 24.3646
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076350205095613802, guid: a7e3af0bd7bb5114e94ab693065de28e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -80.4102
       objectReference: {fileID: 0}
     - target: {fileID: 7076350205095613802, guid: a7e3af0bd7bb5114e94ab693065de28e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1118,7 +1126,8 @@ PrefabInstance:
       propertyPath: grappleText
       value: 
       objectReference: {fileID: 2670120255421985524}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7076350205095613780, guid: a7e3af0bd7bb5114e94ab693065de28e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7e3af0bd7bb5114e94ab693065de28e, type: 3}
 --- !u!1001 &1996687117
 PrefabInstance:

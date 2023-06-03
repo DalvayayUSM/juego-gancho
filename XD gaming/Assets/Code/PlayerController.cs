@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Propiedades de la camara")]
     public Camera cam;
     public Transform orientation;
-    public float sensitivity = 300;
+    private float sensitivity;
 
     private float mouseX = 0, mouseY = 0;
     private float rsX = 0, rsY = 0;
@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput, verticalInput;
 
     void Start() {
+        sensitivity = PlayerPrefs.GetFloat("sensibilidad", 0.5f);
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
