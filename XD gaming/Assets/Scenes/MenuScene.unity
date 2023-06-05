@@ -1955,6 +1955,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 737367395737491927, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.9003549
+      objectReference: {fileID: 0}
+    - target: {fileID: 737367395737491927, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.598519
+      objectReference: {fileID: 0}
     - target: {fileID: 737367396142349348, guid: 756d0bf3592cc904bada3f5d67096a50, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

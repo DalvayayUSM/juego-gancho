@@ -16,9 +16,6 @@ public class PlayerController : MonoBehaviour
     private float xCamRotation;
     private float yCamRotation;
 
-    [Header("Efectos")]
-    public GameObject particula;
-
     [Header("Propiedades del jugador")]
     public float moveForce = 250;
     public float jumpForce = 60;
@@ -94,7 +91,7 @@ public class PlayerController : MonoBehaviour
             rb.drag = groundDrag;
             if (groundInfo.collider.CompareTag("MovablePlatform")) {
                 transform.parent = groundInfo.transform;
-                moveForce = 25;
+                moveForce = 35;
             }
         }
         else {
@@ -112,20 +109,7 @@ public class PlayerController : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveForce;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
-        //---------------------
 
-        if (Input.GetButtonDown("Fire3") || Input.GetKeyDown(KeyCode.E)) {
-
-            rayo = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            if (Physics.Raycast(rayo, out hitInfo))
-            {
-                GameObject temp;
-                temp = Instantiate(particula, hitInfo.point, Quaternion.identity);
-                temp.transform.forward = hitInfo.normal;
-                Destroy(temp, 1.0f);
-            }
-        }
         //resetea al jugador al morir
         if (transform.position.y <= -20) {
             transform.position = Vector3.zero;
