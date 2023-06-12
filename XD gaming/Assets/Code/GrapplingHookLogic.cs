@@ -31,6 +31,7 @@ namespace Grapple
         private float distance;
         private bool movil;
         private float defaultAirMultiplier;
+        private bool zoomOut = true;
 
         public PlayerController pl;
 
@@ -43,16 +44,40 @@ namespace Grapple
 
         void Update()
         {
-            if (Input.GetButtonDown("Fire2") || Input.GetButtonDown("X button") || Input.GetKeyDown(KeyCode.Q)) {
+            if (Input.GetButtonDown("Fire2") || Input.GetButtonDown("X button") || Input.GetButtonUp("RB") || Input.GetKeyDown(KeyCode.Q)) {
                 StartHook();
             }
-            else if (Input.GetButtonUp("Fire2") || Input.GetButtonUp("X button") || Input.GetKeyUp(KeyCode.Q)) {
+            else if (Input.GetButtonUp("Fire2") || Input.GetButtonUp("X button") || Input.GetButtonUp("RB")  || Input.GetKeyUp(KeyCode.Q)) {
                 StopHook();
             }
             //detiene el gancho al morir
             if (player.position.y <= -15) {
                 StopHook();
             }
+
+            if (zoomOut)
+            {
+                if (camCamera.fieldOfView > 75)
+                {
+                    camCamera.fieldOfView -= Time.deltaTime * 100f;
+                }
+                else
+                {
+                    camCamera.fieldOfView = 75;
+                }
+            }
+            else {
+
+                if (camCamera.fieldOfView < 95)
+                {
+                    camCamera.fieldOfView += Time.deltaTime * 100f;
+                }
+                else
+                {
+                    camCamera.fieldOfView = 95;
+                }
+            }
+            Debug.Log(camCamera.fieldOfView);
         }
 
         void LateUpdate()
@@ -64,6 +89,9 @@ namespace Grapple
         {
             RaycastHit hitInfo;
             if (Physics.Raycast(cam.position, cam.forward, out hitInfo, maxDistance, whatIsGrappeable)) {
+
+                zoomOut = false;
+                //camCamera.fieldOfView = Mathf.Lerp(95, 75, Time.deltaTime * 0.1f);
                 //para objeto estatico
                 grapplingPoint = hitInfo.point;
                 //para objeto en movimiento
@@ -109,7 +137,10 @@ namespace Grapple
             }
         }
 
-        void StopHook() {
+        void StopHook()
+        {
+            zoomOut = true;
+            //camCamera.fieldOfView = Mathf.Lerp(75, 95, Time.deltaTime * 0.1f);
             lr.positionCount = 0;
             Destroy(joint);
             pl.setAirMultiplier(defaultAirMultiplier);

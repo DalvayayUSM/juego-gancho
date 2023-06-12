@@ -9,7 +9,7 @@ public class MouseSensibility : MonoBehaviour
     public float sliderValue;
     // Start is called before the first frame update
     void Start() {
-        slider.value = PlayerPrefs.GetFloat("sensibilidad", 0.5f);
+        slider.value = PlayerPrefs.GetFloat("sensibilidad", 1f);
     }
 
     public void ChangeSlider(float value)

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,13 +27,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 moveDirection;
+    Quaternion startRot;
 
     [Header("Ground check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     public float groundDrag;
     bool isGrounded;
-
+    float sphereCastDist;
 
     private Ray rayo;
     private float horizontalInput, verticalInput;
@@ -48,6 +50,8 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = true;
         jumpReady = true;
+
+        startRot = Quaternion.identity;
     }
 
     // Update is called once per frame
@@ -78,17 +82,23 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
+
+            rb.drag = 0;
+            transform.parent = null;
+            moveForce = 20;
+
             Invoke(nameof(ResetJump), jumpCooldown);
         }
         //---------------------
 
         //GroundCheck
         RaycastHit groundInfo;
-        
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, out groundInfo, playerHeight * 0.5f + 0.05f, whatIsGround);
 
+        //isGrounded = Physics.Raycast(transform.position, Vector3.down, out groundInfo, playerHeight * 0.5f + 0.05f, whatIsGround);
+        isGrounded = Physics.SphereCast(transform.position, 0.5f,Vector3.down, out groundInfo, playerHeight * 0.5f + 0.05f, whatIsGround);
         if (isGrounded) {
             rb.drag = groundDrag;
+            sphereCastDist = groundInfo.distance;
             if (groundInfo.collider.CompareTag("MovablePlatform")) {
                 transform.parent = groundInfo.transform;
                 moveForce = 35;
@@ -113,6 +123,12 @@ public class PlayerController : MonoBehaviour
         //resetea al jugador al morir
         if (transform.position.y <= -20) {
             transform.position = Vector3.zero;
+            mouseX = 0;
+            mouseY = 0;
+            xCamRotation = 0;
+            yCamRotation = 0;
+            orientation.rotation = Quaternion.identity;
+            cam.transform.rotation = startRot;
         }
     }
     private void FixedUpdate() {
@@ -135,5 +151,14 @@ public class PlayerController : MonoBehaviour
     public float getAirMultiplier()
     {
         return airMultiplier;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (isGrounded)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(transform.position + Vector3.down * sphereCastDist, 0.5f);
+        }
     }
 }
