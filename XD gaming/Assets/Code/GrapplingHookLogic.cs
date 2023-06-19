@@ -35,6 +35,7 @@ namespace Grapple
         private AudioSource grappleSound;
 
         public PlayerController pl;
+        bool hookDeplyed;
 
 
         void Start() {
@@ -44,10 +45,26 @@ namespace Grapple
         }
 
         void Update() {
-            if (Input.GetButtonDown("Fire2") || Input.GetButtonDown("X button") || Input.GetButtonUp("RB") || Input.GetKeyDown(KeyCode.Q)) {
+            //Debug.Log("Iñigo Montoya: " + ((Input.GetAxis("LT") > 0.5f || Input.GetAxis("RT") > 0.5f) && !hookDeplyed));
+            float triggerInput = 0;
+            bool triggerUsed = false;
+            float rt = Input.GetAxis("RT");
+            float lt = Input.GetAxis("LT");
+            if (rt > 0 && !triggerUsed)
+            {
+                triggerInput = rt;
+                triggerUsed = true;
+            }
+            else if (lt > 0 && !triggerUsed)
+            {
+                triggerInput = lt;
+                triggerUsed = true;
+            }
+            if ( Input.GetKeyDown(KeyCode.Q) || (( triggerInput > 0.5f) && !hookDeplyed)){
                 StartHook();
             }
-            else if (Input.GetButtonUp("Fire2") || Input.GetButtonUp("X button") || Input.GetButtonUp("RB")  || Input.GetKeyUp(KeyCode.Q)) {
+            else if ( Input.GetKeyUp(KeyCode.Q) || ((triggerInput < 0.1f) && hookDeplyed))
+            {
                 StopHook();
             }
             //detiene el gancho al morir
@@ -77,7 +94,6 @@ namespace Grapple
                     camCamera.fieldOfView = 95;
                 }
             }
-            Debug.Log(camCamera.fieldOfView);
         }
 
         void LateUpdate() {
@@ -86,6 +102,7 @@ namespace Grapple
 
         void StartHook() {
             if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hitInfo, maxDistance, whatIsGrappeable)) {
+                hookDeplyed = true;
                 grappleSound.Play();
                 zoomOut = false;
                 //camCamera.fieldOfView = Mathf.Lerp(95, 75, Time.deltaTime * 0.1f);
@@ -137,6 +154,7 @@ namespace Grapple
 
         void StopHook() {
             zoomOut = true;
+            hookDeplyed = false;
             //camCamera.fieldOfView = Mathf.Lerp(75, 95, Time.deltaTime * 0.1f);
             lr.positionCount = 0;
             Destroy(joint);
