@@ -32,18 +32,18 @@ namespace Grapple
         private bool movil;
         private float defaultAirMultiplier;
         private bool zoomOut = true;
+        private AudioSource grappleSound;
 
         public PlayerController pl;
 
 
-        void Start()
-        {
+        void Start() {
             lr = GetComponent<LineRenderer>();
             defaultAirMultiplier = pl.getAirMultiplier();
+            grappleSound = GetComponent<AudioSource>();
         }
 
-        void Update()
-        {
+        void Update() {
             if (Input.GetButtonDown("Fire2") || Input.GetButtonDown("X button") || Input.GetButtonUp("RB") || Input.GetKeyDown(KeyCode.Q)) {
                 StartHook();
             }
@@ -80,16 +80,13 @@ namespace Grapple
             Debug.Log(camCamera.fieldOfView);
         }
 
-        void LateUpdate()
-        {
+        void LateUpdate() {
             DrawRope(movil);
         }
 
-        void StartHook()
-        {
-            RaycastHit hitInfo;
-            if (Physics.Raycast(cam.position, cam.forward, out hitInfo, maxDistance, whatIsGrappeable)) {
-
+        void StartHook() {
+            if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hitInfo, maxDistance, whatIsGrappeable)) {
+                grappleSound.Play();
                 zoomOut = false;
                 //camCamera.fieldOfView = Mathf.Lerp(95, 75, Time.deltaTime * 0.1f);
                 //para objeto estatico
@@ -100,7 +97,8 @@ namespace Grapple
                 joint.autoConfigureConnectedAnchor = false;
                 joint.enablePreprocessing = false;
                 joint.enableCollision = true;
-                if (hitInfo.collider.CompareTag("MovablePlatform")) {
+                if (hitInfo.collider.CompareTag("MovablePlatform"))
+                {
                     joint.connectedBody = hitInfo.rigidbody;
                     distance = Vector3.Distance(player.position, grapplingPoint);
                     movil = true;
@@ -112,7 +110,7 @@ namespace Grapple
                     movil = false;
                 }
 
-                
+
                 joint.minDistance = distance * 0.25f;
 
                 joint.spring = SpringForce;
@@ -137,8 +135,7 @@ namespace Grapple
             }
         }
 
-        void StopHook()
-        {
+        void StopHook() {
             zoomOut = true;
             //camCamera.fieldOfView = Mathf.Lerp(75, 95, Time.deltaTime * 0.1f);
             lr.positionCount = 0;
