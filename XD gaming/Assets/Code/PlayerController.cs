@@ -38,9 +38,11 @@ public class PlayerController : MonoBehaviour
 
     private Ray rayo;
     private float horizontalInput, verticalInput;
+    private AudioSource deathSound;
 
     void Start() {
         sensitivity = PlayerPrefs.GetFloat("sensibilidad", 0.5f);
+        deathSound = GetComponent<AudioSource>();
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
         //resetea al jugador al morir
         if (transform.position.y <= -20) {
+            deathSound.Play();
             transform.position = Vector3.zero;
             mouseX = 0;
             mouseY = 0;

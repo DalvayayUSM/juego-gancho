@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Grapple
-{
-    public class GrapplingHookLogic : MonoBehaviour
-    {
+namespace Grapple {
+    public class GrapplingHookLogic : MonoBehaviour {
         [Header("Propiedades fisicas del gancho")]
         public float SpringForce = 5.0f;
         public float SpringDamper = 7.0f;
@@ -23,7 +21,6 @@ namespace Grapple
         public Transform player;
         public Camera camCamera;
 
-
         private LineRenderer lr;
         private Transform anchor;
         private SpringJoint joint;
@@ -36,7 +33,7 @@ namespace Grapple
 
         public PlayerController pl;
         bool hookDeplyed;
-
+        float rt;
 
         void Start() {
             lr = GetComponent<LineRenderer>();
@@ -45,27 +42,16 @@ namespace Grapple
         }
 
         void Update() {
-            //Debug.Log("Iñigo Montoya: " + ((Input.GetAxis("LT") > 0.5f || Input.GetAxis("RT") > 0.5f) && !hookDeplyed));
-            float triggerInput = 0;
-            bool triggerUsed = false;
-            float rt = Input.GetAxis("RT");
-            float lt = Input.GetAxis("LT");
-            if (rt > 0 && !triggerUsed)
-            {
-                triggerInput = rt;
-                triggerUsed = true;
-            }
-            else if (lt > 0 && !triggerUsed)
-            {
-                triggerInput = lt;
-                triggerUsed = true;
-            }
-            if ( Input.GetKeyDown(KeyCode.Q) || (( triggerInput > 0.5f) && !hookDeplyed)){
+            rt = Input.GetAxis("RT");
+            if ((Input.GetKeyDown(KeyCode.Q) || rt >= 0.5f) && !hookDeplyed) {
+            // if ( !hookDeplyed && (Input.GetKeyDown(KeyCode.Q) || rt >= 0.5f)) {
                 StartHook();
+                hookDeplyed = true;
             }
-            else if ( Input.GetKeyUp(KeyCode.Q) || ((triggerInput < 0.1f) && hookDeplyed))
-            {
+            else if ((Input.GetKeyUp(KeyCode.Q) || rt <= 0.1f) && hookDeplyed) {
+            //else if (hookDeplyed && (Input.GetKeyUp(KeyCode.Q) || rt <= 0.1f)) {
                 StopHook();
+                hookDeplyed = false;
             }
             //detiene el gancho al morir
             if (player.position.y <= -15) {
