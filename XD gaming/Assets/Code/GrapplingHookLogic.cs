@@ -34,6 +34,7 @@ namespace Grapple {
         public PlayerController pl;
         bool hookDeplyed;
         float rt;
+        bool triggerUsed;
 
         void Start() {
             lr = GetComponent<LineRenderer>();
@@ -44,12 +45,10 @@ namespace Grapple {
         void Update() {
             rt = Input.GetAxis("RT");
             if ((Input.GetKeyDown(KeyCode.Q) || rt >= 0.5f) && !hookDeplyed) {
-            // if ( !hookDeplyed && (Input.GetKeyDown(KeyCode.Q) || rt >= 0.5f)) {
                 StartHook();
                 hookDeplyed = true;
             }
             else if ((Input.GetKeyUp(KeyCode.Q) || rt <= 0.1f) && hookDeplyed) {
-            //else if (hookDeplyed && (Input.GetKeyUp(KeyCode.Q) || rt <= 0.1f)) {
                 StopHook();
                 hookDeplyed = false;
             }
@@ -58,25 +57,17 @@ namespace Grapple {
                 StopHook();
             }
 
-            if (zoomOut)
-            {
-                if (camCamera.fieldOfView > 75)
-                {
+            if (zoomOut) {
+                if (camCamera.fieldOfView > 75) {
                     camCamera.fieldOfView -= Time.deltaTime * 100f;
-                }
-                else
-                {
+                } else {
                     camCamera.fieldOfView = 75;
                 }
             }
             else {
-
-                if (camCamera.fieldOfView < 95)
-                {
+                if (camCamera.fieldOfView < 95) {
                     camCamera.fieldOfView += Time.deltaTime * 100f;
-                }
-                else
-                {
+                } else {
                     camCamera.fieldOfView = 95;
                 }
             }
