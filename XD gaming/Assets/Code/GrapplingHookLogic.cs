@@ -34,23 +34,27 @@ namespace Grapple {
         public PlayerController pl;
         bool hookDeplyed;
         float rt;
-        bool triggerUsed;
 
         void Start() {
             lr = GetComponent<LineRenderer>();
             defaultAirMultiplier = pl.getAirMultiplier();
             grappleSound = GetComponent<AudioSource>();
+            grappleSound.volume = PlayerPrefs.GetFloat("volumenAudio");
         }
 
         void Update() {
             rt = Input.GetAxis("RT");
-            if ((Input.GetKeyDown(KeyCode.Q) || rt >= 0.5f) && !hookDeplyed) {
+            if (Input.GetKeyDown(KeyCode.Q)) {
                 StartHook();
-                hookDeplyed = true;
             }
-            else if ((Input.GetKeyUp(KeyCode.Q) || rt <= 0.1f) && hookDeplyed) {
+            else if (rt >= 0.5f && !hookDeplyed) {
+                StartHook();
+            }
+            if (Input.GetKeyUp(KeyCode.Q)) {
                 StopHook();
-                hookDeplyed = false;
+            }
+            else if (rt <= 0.1f && hookDeplyed) {
+                StopHook();
             }
             //detiene el gancho al morir
             if (player.position.y <= -15) {
@@ -82,7 +86,6 @@ namespace Grapple {
                 hookDeplyed = true;
                 grappleSound.Play();
                 zoomOut = false;
-                //camCamera.fieldOfView = Mathf.Lerp(95, 75, Time.deltaTime * 0.1f);
                 //para objeto estatico
                 grapplingPoint = hitInfo.point;
                 //para objeto en movimiento
@@ -91,22 +94,18 @@ namespace Grapple {
                 joint.autoConfigureConnectedAnchor = false;
                 joint.enablePreprocessing = false;
                 joint.enableCollision = true;
-                if (hitInfo.collider.CompareTag("MovablePlatform"))
-                {
+                if (hitInfo.collider.CompareTag("MovablePlatform")) {
                     joint.connectedBody = hitInfo.rigidbody;
                     distance = Vector3.Distance(player.position, grapplingPoint);
                     movil = true;
                 }
-                else
-                {
+                else {
                     joint.connectedAnchor = grapplingPoint;
                     distance = Vector3.Distance(player.position, anchor.position);
                     movil = false;
                 }
 
-
                 joint.minDistance = distance * 0.25f;
-
                 joint.spring = SpringForce;
                 joint.damper = SpringDamper;
                 joint.massScale = SpringMassScale;

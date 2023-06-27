@@ -2331,6 +2331,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1391520923207170578, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d27d460128526ab4db639a57c227bfca, type: 3}
     - target: {fileID: 1511015720324695999, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
       propertyPath: jumpForce
       value: 68
@@ -2356,6 +2360,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1511015720602119658, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052803926473365111, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052803926473365111, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052803926473365111, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052803926473365111, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052803926473365111, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052803926473365111, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -2415,7 +2443,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
 --- !u!114 &3600092384461051962 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 900646429455691787, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3052803926473365110, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
   m_PrefabInstance: {fileID: 3600092384461051961}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
