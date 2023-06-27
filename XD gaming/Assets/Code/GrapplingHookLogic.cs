@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Grapple {
     public class GrapplingHookLogic : MonoBehaviour {
@@ -20,6 +20,7 @@ namespace Grapple {
         public Transform cam;
         public Transform player;
         public Camera camCamera;
+        public GameObject crosshair;
 
         private LineRenderer lr;
         private Transform anchor;
@@ -42,7 +43,22 @@ namespace Grapple {
         }
 
         void Update() {
-            rt = Input.GetAxis("RT");
+            //cambiar color de la mira
+            RaycastHit distancia;
+            if (Physics.Raycast(cam.position, cam.forward, out distancia, whatIsGrappeable)) {
+                if(distancia.distance <= maxDistance) {
+                    //(groundInfo.collider.CompareTag("MovablePlatform")
+                        crosshair.GetComponent<Image>().color = Color.green;
+                }
+                else {
+                    crosshair.GetComponent<Image>().color = Color.white;
+                }
+            }
+            else {
+                crosshair.GetComponent<Image>().color = Color.white;
+            }
+                rt = Input.GetAxis("RT");
+            // activar el gancho
             if (Input.GetKeyDown(KeyCode.Q)) {
                 StartHook();
             }
@@ -130,7 +146,6 @@ namespace Grapple {
         void StopHook() {
             zoomOut = true;
             hookDeplyed = false;
-            //camCamera.fieldOfView = Mathf.Lerp(75, 95, Time.deltaTime * 0.1f);
             lr.positionCount = 0;
             Destroy(joint);
             pl.setAirMultiplier(defaultAirMultiplier);

@@ -1018,6 +1018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca02fdfd498f5024fa9c1f9e14baf8e2, type: 3}
+--- !u!1 &1373817924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3052803927947705159, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+  m_PrefabInstance: {fileID: 1993867633079437678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1660130113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1370,6 +1375,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052803926473365111, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052803927120585312, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 1373817924}
+    - target: {fileID: 3052803927947705161, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

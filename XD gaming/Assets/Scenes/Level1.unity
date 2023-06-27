@@ -2246,6 +2246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1_platforms2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3cd0e1c92fc061b4a8fdab96fee5ed06, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cd0e1c92fc061b4a8fdab96fee5ed06, type: 3}
 --- !u!1001 &1815626089
@@ -2571,6 +2575,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3052803927120585312, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 3600092384461051963}
     - target: {fileID: 3849923681580719215, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -2636,6 +2644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3600092384461051963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3052803927947705159, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+  m_PrefabInstance: {fileID: 3600092384461051961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4862451916079310430
 PrefabInstance:
   m_ObjectHideFlags: 0
