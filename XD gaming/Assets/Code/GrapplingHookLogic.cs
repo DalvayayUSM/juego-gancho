@@ -39,7 +39,6 @@ namespace Grapple {
             lr = GetComponent<LineRenderer>();
             defaultAirMultiplier = pl.getAirMultiplier();
             grappleSound = GetComponent<AudioSource>();
-            grappleSound.volume = PlayerPrefs.GetFloat("volumenAudio");
         }
 
         void Update() {
