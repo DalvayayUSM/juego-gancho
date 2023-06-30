@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded) {
             rb.drag = groundDrag;
             sphereCastDist = groundInfo.distance;
-            if (groundInfo.collider.CompareTag("MovablePlatform")) {
+            if (groundInfo.collider.CompareTag("MovablePlatform") || groundInfo.collider.CompareTag("MovableNoGrappablePlatform")) {
                 transform.parent = groundInfo.transform;
                 moveForce = 35;
             }

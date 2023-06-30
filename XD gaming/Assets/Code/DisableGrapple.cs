@@ -4,8 +4,7 @@ using UnityEngine;
 using TMPro;
 
 
-public class DisableGrapple : MonoBehaviour
-{
+public class DisableGrapple : MonoBehaviour {
     [Header("Texto del gancho")]
     public TMP_Text grappleText;
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ namespace Grapple {
         public Transform player;
         public Camera camCamera;
         public GameObject crosshair;
+        public GameObject pulsera;
 
         private LineRenderer lr;
         private Transform anchor;
@@ -47,17 +49,40 @@ namespace Grapple {
             RaycastHit distancia;
             if (Physics.Raycast(cam.position, cam.forward, out distancia, whatIsGrappeable)) {
                 if(distancia.distance <= maxDistance) {
-                    //(groundInfo.collider.CompareTag("MovablePlatform")
+                    if (hookDeplyed) {
                         crosshair.GetComponent<Image>().color = Color.green;
+                        pulsera.GetComponent<Renderer>().materials[2].SetColor("_EmissionColor", Color.yellow);
+                        pulsera.GetComponent<Renderer>().materials[2].SetColor("_Color", Color.yellow);
+                    }
+                    else if (distancia.collider.CompareTag("GrappableObject") || distancia.collider.CompareTag("MovablePlatform")) {
+                        crosshair.GetComponent<Image>().color = Color.green;
+                        pulsera.GetComponent<Renderer>().materials[2].SetColor("_EmissionColor", Color.green);
+                        pulsera.GetComponent<Renderer>().materials[2].SetColor("_Color", Color.green);
+                    }
+                    else if (distancia.collider.CompareTag("NoGrappableZone") || distancia.collider.CompareTag("MovableNoGrappablePlatform")) {
+                        crosshair.GetComponent<Image>().color = Color.white;
+                        pulsera.GetComponent<Renderer>().materials[2].SetColor("_EmissionColor", Color.red);
+                        pulsera.GetComponent<Renderer>().materials[2].SetColor("_Color", Color.red);
+                    }
                 }
                 else {
                     crosshair.GetComponent<Image>().color = Color.white;
+                    pulsera.GetComponent<Renderer>().materials[2].SetColor("_EmissionColor", Color.red);
+                    pulsera.GetComponent<Renderer>().materials[2].SetColor("_Color", Color.red);
                 }
+            }
+            else if (hookDeplyed) {
+                crosshair.GetComponent<Image>().color = Color.white;
+                pulsera.GetComponent<Renderer>().materials[2].SetColor("_EmissionColor", Color.yellow);
+                pulsera.GetComponent<Renderer>().materials[2].SetColor("_Color", Color.yellow);
             }
             else {
                 crosshair.GetComponent<Image>().color = Color.white;
+                pulsera.GetComponent<Renderer>().materials[2].SetColor("_EmissionColor", Color.red);
+                pulsera.GetComponent<Renderer>().materials[2].SetColor("_Color", Color.red);
             }
                 rt = Input.GetAxis("RT");
+
             // activar el gancho
             if (Input.GetKeyDown(KeyCode.Q)) {
                 StartHook();
