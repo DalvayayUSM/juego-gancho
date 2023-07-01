@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class OptionsInScene : MonoBehaviour
 {
-    public OptionsController optionsPanel;
+    public GameObject optionsPanel;
+    OptionsController optionsController;
+    bool active;
+
     // Start is called before the first frame update
-    void Start(){
-        optionsPanel = GameObject.FindGameObjectWithTag("Options").GetComponent<OptionsController>();
+    void Start() {
+        //optionsController = optionsPanel.FindGameObjectWithTag("Options").GetComponent<OptionsController>();
+        optionsPanel.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update(){
-        if (Input.GetKeyDown(KeyCode.Escape)){
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Debug.Log(optionsPanel.activeInHierarchy);
+            if (!active) {
             ShowOptions();
+            }
+            else {
+                HideOptions();
+            }
         }
     }
 
     public void ShowOptions(){
-        optionsPanel.optionsScreen.SetActive(true);
+        active = true;
+        optionsPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    
+    public void HideOptions(){
+        active = false;
+        optionsPanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
