@@ -93,16 +93,16 @@ namespace Grapple {
                 }
             }
             else {
-                if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Mouse0)) {
+                if (Input.GetKeyDown(KeyCode.Mouse0)) {
                     StartHook();
                 }
-                else if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.Mouse0)) {
+                else if (Input.GetKeyUp(KeyCode.Mouse0)) {
                     StopHook();
                 }
             }
 
             //detiene el gancho al morir
-            if (player.position.y <= -15) {
+            if (player.position.y <= -30) {
                 StopHook();
             }
 
@@ -130,7 +130,11 @@ namespace Grapple {
         IEnumerator CheckController() {
             while (true) {
                 var controles = Input.GetJoystickNames();
-                controllerConnected = controles[0] != "";
+                controllerConnected = controles.Length > 0 ? (controles[0] != "") : false;
+                //if (controles.Length > 0) {
+                //controllerConnected = controles[0] != "";
+                //}
+                
                 yield return new WaitForSeconds(1f);
             }
         }
