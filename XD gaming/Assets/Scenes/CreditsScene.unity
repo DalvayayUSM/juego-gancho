@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 75}
-  m_SizeDelta: {x: 264.3901, y: 67.4339}
+  m_SizeDelta: {x: 549.5728, y: 68.4241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40346573
 MonoBehaviour:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UI Design
+  m_text: "Dise\xF1o de interfaces"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -619,7 +619,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 353.2918, y: 70.3203}
+  m_SizeDelta: {x: 475.6444, y: 67.5862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793938576
 MonoBehaviour:
@@ -641,7 +641,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Design
+  m_text: "Dise\xF1o de niveles"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1179,7 +1179,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 75}
-  m_SizeDelta: {x: 385.1046, y: 68.8026}
+  m_SizeDelta: {x: 438.5516, y: 67.3179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661555703
 MonoBehaviour:
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Assets Design
+  m_text: "Director art\xEDstico"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1851,7 +1851,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -1500}
-  m_SizeDelta: {x: 916.4525, y: 113.1369}
+  m_SizeDelta: {x: 869.0015, y: 113.1369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912401724
 MonoBehaviour:
@@ -1873,7 +1873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thanks for playing!!!
+  m_text: Gracias por jugar!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1986,7 +1986,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1259.7976, y: 258.7846}
+  m_SizeDelta: {x: 1271.7522, y: 257.6163}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987307191
 MonoBehaviour:
@@ -2008,20 +2008,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main Menu: Intervals - Touch and go
-
-    Level 1: I stand alone (instrumental)
-    - Godsmack
-
-    Level 2: Undefeatable (instrumental) - Sonic Frontiers OST
-
-    Level
-    3: Riven of a thousand voices - Destiny 2: Forsaken OST
-
-    Credits: Sentient
-    Glow - Periphery
-
-'
+  m_text: "Men\xFA Principal: Touch and Go - Intervals\nNivel 1: I Stand Alone (instrumental)
+    - Godsmack\nNivel 2: Undefeatable (instrumental) - Sonic Frontiers OST\nNivel
+    3: Riven of a Thousand Voices - Destiny 2: Forsaken OST\nCr\xE9ditos: Sentient
+    Glow - Periphery\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2327,7 +2317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soundtrack
+  m_text: Banda Sonora
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

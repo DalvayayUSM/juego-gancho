@@ -1611,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4952917379985358622, guid: 3a61300b7c1ca5d408176f8df759068f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -172.9
+      value: -170
       objectReference: {fileID: 0}
     - target: {fileID: 4952917379985358622, guid: 3a61300b7c1ca5d408176f8df759068f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1933,6 +1933,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 30x20platform
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 910225b939d894d499ac96f04c069228, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 910225b939d894d499ac96f04c069228, type: 3}
+      propertyPath: m_TagString
+      value: NoGrappableZone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 910225b939d894d499ac96f04c069228, type: 3}
 --- !u!1 &1403431401 stripped
@@ -2177,6 +2185,10 @@ PrefabInstance:
       propertyPath: pulsera
       value: 
       objectReference: {fileID: 1438252553}
+    - target: {fileID: 7414922228011097747, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: hookLogic
+      value: 
+      objectReference: {fileID: 1438252554}
     - target: {fileID: 7566405775099516747, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2208,6 +2220,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6615903681064332682, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
   m_PrefabInstance: {fileID: 1438252552}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438252554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7414922227518963921, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+  m_PrefabInstance: {fileID: 1438252552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1e5c9051ccff14bac9b5afea401705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1469462790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2548,7 +2571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 910225b939d894d499ac96f04c069228, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -182
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 910225b939d894d499ac96f04c069228, type: 3}
       propertyPath: m_LocalRotation.w

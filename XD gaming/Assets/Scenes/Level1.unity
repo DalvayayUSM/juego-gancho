@@ -2879,8 +2879,23 @@ PrefabInstance:
       propertyPath: pulsera
       value: 
       objectReference: {fileID: 161187012}
+    - target: {fileID: 7414922228011097747, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+      propertyPath: hookLogic
+      value: 
+      objectReference: {fileID: 3600092384461051962}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+--- !u!114 &3600092384461051962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7414922227518963921, guid: b2d75badb84162a4b8489a8125e2992f, type: 3}
+  m_PrefabInstance: {fileID: 3600092384461051961}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1e5c9051ccff14bac9b5afea401705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4862451916079310430
 PrefabInstance:
   m_ObjectHideFlags: 0

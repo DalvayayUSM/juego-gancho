@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +35,7 @@ namespace Grapple {
         public PlayerController pl;
         bool hookDeplyed;
         float rt;
+        bool controllerConnected;
 
         void Start() {
             lr = GetComponent<LineRenderer>();
@@ -81,26 +80,33 @@ namespace Grapple {
                 pulsera.GetComponent<Renderer>().materials[2].SetColor("_EmissionColor", Color.red);
                 pulsera.GetComponent<Renderer>().materials[2].SetColor("_Color", Color.red);
             }
-                rt = Input.GetAxis("RT");
 
             // activar el gancho
-            if (Input.GetKeyDown(KeyCode.Q)) {
-                StartHook();
+            // se verifica si hay un control conectado
+            rt = Input.GetAxis("RT");
+            if (controllerConnected) {
+                if ((rt >= 0.5f && !hookDeplyed)) {
+                    StartHook();
+                }
+                else if (rt <= 0.1f && hookDeplyed) {
+                    StopHook();
+                }
             }
-            else if (rt >= 0.5f && !hookDeplyed) {
-                StartHook();
+            else {
+                if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Mouse0)) {
+                    StartHook();
+                }
+                else if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.Mouse0)) {
+                    StopHook();
+                }
             }
-            if (Input.GetKeyUp(KeyCode.Q)) {
-                StopHook();
-            }
-            else if (rt <= 0.1f && hookDeplyed) {
-                StopHook();
-            }
+
             //detiene el gancho al morir
             if (player.position.y <= -15) {
                 StopHook();
             }
 
+            //cambia el FOV al usar el gancho
             if (zoomOut) {
                 if (camCamera.fieldOfView > 75) {
                     camCamera.fieldOfView -= Time.deltaTime * 100f;
@@ -119,6 +125,22 @@ namespace Grapple {
 
         void LateUpdate() {
             DrawRope(movil);
+        }
+
+        IEnumerator CheckController() {
+            while (true) {
+                var controles = Input.GetJoystickNames();
+                controllerConnected = controles[0] != "";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        private void Awake() {
+            StartCoroutine(CheckController());
+        }
+
+        public bool getControllerConnected() {
+            return controllerConnected;
         }
 
         void StartHook() {
